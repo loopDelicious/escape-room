@@ -15,7 +15,7 @@ const puzzles = [
   {
     id: 2,
     type: "image",
-    image: "/puzzle1.jpg", // Place an image named puzzle1.jpg in public/
+    image: "/lock.png", // Place image in public/
     question: "Find the hidden number in the image.",
     answer: "42",
     hints: [

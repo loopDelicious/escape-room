@@ -102,3 +102,42 @@
   height: 64px;
   user-select: none;
 }
+
+/* Landing page */
+.landing-container {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.room-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.room-card {
+  background: #333;
+  border-radius: 12px;
+  padding: 2rem;
+  min-width: 220px;
+  box-shadow: 0 4px 24px #0008;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.room-card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.room-card button {
+  margin-top: 1rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
