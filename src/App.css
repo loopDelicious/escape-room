@@ -1,38 +1,104 @@
-.App {
+/* src/App.css */
+.app-container {
+  font-family: 'Segoe UI', sans-serif;
+  background: #222;
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.puzzle-box {
+  background: #333;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  box-shadow: 0 4px 24px #0008;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.puzzle-content {
+  margin-bottom: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.puzzle-image {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.answer-form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.answer-form input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  width: 60%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.answer-form button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.message {
+  margin: 1rem 0;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.hint-area {
+  background: #222;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.hint-area h4 {
+  margin: 0 0 0.5rem 0;
+}
+
+.hint-area ul {
+  list-style: disc inside;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+.hint-area button {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+
+.progress {
+  margin-top: 2rem;
+  color: #aaa;
+}
+
+.interactive-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.key, .lock {
+  width: 64px;
+  height: 64px;
+  user-select: none;
 }
