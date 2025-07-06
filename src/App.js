@@ -176,7 +176,11 @@ function App() {
 
   // Puzzle page
   return (
-    <div className={`puzzle-box${fade ? " fade-out" : ""}`}>
+    <div
+      className={`puzzle-box${
+        puzzle.type === "bridge" ? " bridge-puzzle-box" : ""
+      }${fade ? " fade-out" : ""}`}
+    >
       {puzzle.type === "intro" && (
         <IntroPuzzle puzzle={puzzle} onSolve={handleAnswer} />
       )}

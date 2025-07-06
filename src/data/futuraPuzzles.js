@@ -86,10 +86,10 @@ const puzzles = [
     hotspots: [
       {
         id: "warning-light",
-        x: 250,
-        y: 550,
-        width: 32,
-        height: 32,
+        x: 30,
+        y: 73,
+        width: 7,
+        height: 7,
         icon: "/clues/warning-light.gif",
         clue: {
           title: "Radiation Warning",
@@ -99,10 +99,10 @@ const puzzles = [
       },
       {
         id: "rodent",
-        x: 250,
-        y: 70,
-        width: 50,
-        height: 50,
+        x: 27,
+        y: 16,
+        width: 7,
+        height: 7,
         icon: "/cards/tunnelrat.png",
         clue: {
           title: "Tunnel Rat",
@@ -112,10 +112,10 @@ const puzzles = [
       },
       {
         id: "communication-panel",
-        x: 600,
-        y: 490,
-        width: 30,
-        height: 30,
+        x: 80,
+        y: 62,
+        width: 7,
+        height: 7,
         rotate: -10,
         icon: "/clues/communication-panel.png",
         clue: {
@@ -126,10 +126,10 @@ const puzzles = [
       },
       {
         id: "wires",
-        x: 500,
-        y: 538,
-        width: 50,
-        height: 20,
+        x: 68,
+        y: 71,
+        width: 7,
+        height: 3,
         icon: "",
         hidden: true,
         clue: {
@@ -140,10 +140,10 @@ const puzzles = [
       },
       {
         id: "dust",
-        x: 700,
-        y: 655,
-        width: 50,
-        height: 50,
+        x: 94,
+        y: 83,
+        width: 8,
+        height: 8,
         icon: "/clues/white-powder.png",
         clue: {
           title: "White Powder",
@@ -153,10 +153,10 @@ const puzzles = [
       },
       {
         id: "red-herring-communication-panel",
-        x: 450,
-        y: 490,
-        width: 32,
-        height: 32,
+        x: 58,
+        y: 62,
+        width: 7,
+        height: 7,
         icon: "/clues/communication-panel.png",
         disabled: true,
         clue: {
@@ -167,10 +167,10 @@ const puzzles = [
       },
       {
         id: "monitor-1",
-        x: 483,
-        y: 465,
-        width: 60,
-        height: 60,
+        x: 63,
+        y: 60,
+        width: 10,
+        height: 10,
         icon: "/clues/monitor1.png",
         disabled: true,
         clue: {
@@ -181,10 +181,10 @@ const puzzles = [
       },
       {
         id: "monitor-2",
-        x: 537,
-        y: 465,
-        width: 60,
-        height: 60,
+        x: 72,
+        y: 60,
+        width: 10,
+        height: 10,
         icon: "/clues/monitor2.png",
         disabled: true,
         clue: {
@@ -195,10 +195,10 @@ const puzzles = [
       },
       {
         id: "crumpled-paper",
-        x: 237,
-        y: 620,
-        width: 60,
-        height: 60,
+        x: 29,
+        y: 80,
+        width: 8,
+        height: 8,
         icon: "/clues/crumpled-paper.png",
         disabled: true,
         clue: {
@@ -209,10 +209,10 @@ const puzzles = [
       },
       {
         id: "fire-extinguisher",
-        x: -150,
-        y: 520,
-        width: 250,
-        height: 250,
+        x: -10,
+        y: 60,
+        width: 23,
+        height: 23,
         icon: "/clues/fire-extinguisher.png",
         disabled: true,
         clue: {
