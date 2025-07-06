@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HintArea from "./components/HintArea";
 import LandingPage from "./LandingPage";
-import GridOverlay from "./components/GridOverlay";
 import puzzles from "./data/futuraPuzzles";
 import IntroPuzzle from "./components/IntroPuzzle";
 import TextPuzzle from "./components/TextPuzzle";

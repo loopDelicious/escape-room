@@ -450,6 +450,11 @@ body, .app-container.general {
   margin-bottom: 1rem;
 }
 
+.card-3d.selected {
+  outline: 3px solid #00ffe7;
+  box-shadow: 0 0 16px #00ffe7cc;
+}
+
 .card-inner {
   width: 100%;
   height: 100%;

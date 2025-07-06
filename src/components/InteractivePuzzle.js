@@ -60,6 +60,10 @@ const CHAMBERS = [
   { id: "critter", image: "/chambers/critter.png", alt: "Critter Chamber" },
 ];
 
+const isTouchDevice =
+  typeof window !== "undefined" &&
+  ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
 // Fisher-Yates shuffle
 function shuffle(array) {
   const arr = array.slice();
@@ -82,6 +86,51 @@ export default function InteractivePuzzle({ onSolve, question }) {
   const [solvedCount, setSolvedCount] = useState(0);
   const [message, setMessage] = useState("");
   const [chamberHighlight, setChamberHighlight] = useState({}); // {chamberId: "none"|"correct"|"incorrect"}
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const handleCardTap = (idx) => {
+    if (cards[idx].sorted) return;
+    // Reveal the card if not already revealed
+    if (!cards[idx].revealed) {
+      setCards(cards.map((c, i) => (i === idx ? { ...c, revealed: true } : c)));
+    }
+    setSelectedCard(idx);
+  };
+
+  const handleChamberTap = (chamberId) => {
+    if (selectedCard === null) return;
+    handleDrop(chamberId, selectedCard);
+    const idx = selectedCard;
+    const card = cards[idx];
+    if (!card || card.sorted || !card.revealed) return;
+
+    if (card.category === chamberId) {
+      // Correct!
+      const newCards = cards.map((c, i) =>
+        i === idx ? { ...c, sorted: true, revealed: true } : c
+      );
+      const newSolved = solvedCount + 1;
+      setCards(newCards);
+      setSelectedCard(null);
+      setSolvedCount(newSolved);
+      setMessage("Correct!");
+
+      if (newSolved === cards.length) {
+        setTimeout(() => {
+          onSolve("unlocked");
+        }, 800);
+      }
+    } else {
+      // Incorrect! Reset all
+      setMessage("Wrong chamber! All critters escape...");
+      setTimeout(() => {
+        setCards(cards.map((c) => ({ ...c, revealed: false, sorted: false })));
+        setSelectedCard(null);
+        setSolvedCount(0);
+        setMessage("");
+      }, 1200);
+    }
+  };
 
   // Reveal a card
   const handleReveal = (idx) => {
@@ -156,11 +205,25 @@ export default function InteractivePuzzle({ onSolve, question }) {
             key={card.id}
             className={`card-3d ${
               card.revealed || card.sorted ? "flipped" : ""
-            } ${card.sorted ? "sorted" : ""}`}
-            onClick={() => handleReveal(idx)}
-            draggable={card.revealed && !card.sorted && currentCard === idx}
+            } ${card.sorted ? "sorted" : ""} ${
+              selectedCard === idx ? "selected" : ""
+            }`}
+            onClick={
+              isTouchDevice
+                ? () => handleCardTap(idx) // tap-to-select
+                : () => handleReveal(idx) // desktop: reveal on click
+            }
+            draggable={
+              !isTouchDevice &&
+              card.revealed &&
+              !card.sorted &&
+              currentCard === idx
+            }
             onDragStart={
-              card.revealed && !card.sorted && currentCard === idx
+              !isTouchDevice &&
+              card.revealed &&
+              !card.sorted &&
+              currentCard === idx
                 ? (e) => handleDragStart(e, idx)
                 : undefined
             }
@@ -168,7 +231,9 @@ export default function InteractivePuzzle({ onSolve, question }) {
               cursor: card.sorted
                 ? "default"
                 : card.revealed
-                ? "grab"
+                ? isTouchDevice
+                  ? "pointer"
+                  : "grab"
                 : "pointer",
               opacity: card.sorted ? 0.5 : 1,
             }}
@@ -182,7 +247,7 @@ export default function InteractivePuzzle({ onSolve, question }) {
                   src={card.image}
                   alt=""
                   className="card-img"
-                  title={card.name} // Native tooltip
+                  title={card.name}
                 />
               </div>
             </div>
@@ -194,21 +259,22 @@ export default function InteractivePuzzle({ onSolve, question }) {
           <div
             key={chamber.id}
             className={`chamber chamber-img
-              ${chamberHighlight[chamber.id] === "hover" ? "chamber-hover" : ""}
-              ${
-                chamberHighlight[chamber.id] === "correct"
-                  ? "chamber-correct"
-                  : ""
-              }
-              ${
-                chamberHighlight[chamber.id] === "incorrect"
-                  ? "chamber-incorrect"
-                  : ""
-              }
-            `}
-            onDrop={handleDrop(chamber.id)}
-            onDragOver={handleDragOver(chamber.id)}
-            onDragLeave={handleDragLeave}
+          ${chamberHighlight[chamber.id] === "hover" ? "chamber-hover" : ""}
+          ${chamberHighlight[chamber.id] === "correct" ? "chamber-correct" : ""}
+          ${
+            chamberHighlight[chamber.id] === "incorrect"
+              ? "chamber-incorrect"
+              : ""
+          }
+        `}
+            onClick={
+              isTouchDevice
+                ? () => handleChamberTap(chamber.id) // tap-to-drop
+                : undefined
+            }
+            onDrop={!isTouchDevice ? handleDrop(chamber.id) : undefined}
+            onDragOver={!isTouchDevice ? handleDragOver(chamber.id) : undefined}
+            onDragLeave={!isTouchDevice ? handleDragLeave : undefined}
           >
             <img
               src={chamber.image}

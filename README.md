@@ -1,6 +1,6 @@
 # Online escape room
 
-## 🧩 [Try it out](https://loopdelicious.github.io/escape-room/)
+## 🧩 [Try it out](https://puzzle.joycejetson.com/)
 
 <p align="left">
   <a href="https://coff.ee/joycejetson">
