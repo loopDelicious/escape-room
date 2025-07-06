@@ -93,15 +93,30 @@ function App() {
   };
 
   const handleAnswer = (answer) => {
-    if (answer.trim().toLowerCase() === puzzle.answer.trim().toLowerCase()) {
-      setMessage("Correct! Moving to the next puzzle...");
+    // If answer is provided (from single-answer puzzles)
+    if (typeof answer === "string" && puzzle.answer) {
+      if (
+        (answer || "").trim().toLowerCase() ===
+        (puzzle.answer || "").trim().toLowerCase()
+      ) {
+        setMessage("Correct! Moving to the next puzzle...");
+        setFade(true);
+        setTimeout(() => {
+          setCurrent((prev) => prev + 1);
+          setFade(false);
+          setMessage("");
+        }, 800);
+      } else {
+        setMessage("Incorrect, try again!");
+      }
+    } else {
+      // For multi-question puzzles, just advance with no message
       setFade(true);
       setTimeout(() => {
         setCurrent((prev) => prev + 1);
         setFade(false);
+        setMessage("");
       }, 800);
-    } else {
-      setMessage("Incorrect, try again!");
     }
   };
 
@@ -158,7 +173,9 @@ function App() {
       {isFuturaRoom && <GridOverlay />}
       <h1>Futura</h1>
       <div className={`puzzle-box${fade ? " fade-out" : ""}`}>
-        {puzzle.type === "text" && <TextPuzzle question={puzzle.question} />}
+        {puzzle.type === "text" && (
+          <TextPuzzle questions={puzzle.questions} onSolve={handleAnswer} />
+        )}
         {puzzle.type === "image" && (
           <ImagePuzzle image={puzzle.image} question={puzzle.question} />
         )}
@@ -168,18 +185,20 @@ function App() {
             onSolve={handleAnswer}
           />
         )}
-        {puzzle.type !== "interactive" && (
-          <form onSubmit={handleSubmit} className="answer-form">
-            <input
-              type="text"
-              value={input}
-              onChange={handleInput}
-              placeholder="Your answer"
-              autoFocus
-            />
-            <button type="submit">Submit</button>
-          </form>
-        )}
+        {puzzle.type !== "interactive" &&
+          puzzle.type !== "text" &&
+          puzzle.answer && (
+            <form onSubmit={handleSubmit} className="answer-form">
+              <input
+                type="text"
+                value={input}
+                onChange={handleInput}
+                placeholder="Your answer"
+                autoFocus
+              />
+              <button type="submit">Submit</button>
+            </form>
+          )}
         {message && <div className="message">{message}</div>}
         <HintArea
           hints={puzzle.hints}

@@ -289,6 +289,26 @@ body, .app-container.general {
   margin-top: 1.5rem;
 }
 
+/* Text puzzle */
+.text-puzzle {
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+}
+
+.riddle-number {
+  color: #00ffe7;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.riddle-question {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Image puzzle */
+
 .flashlight-image-container {
   position: relative;
   display: inline-block;
