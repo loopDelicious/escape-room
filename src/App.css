@@ -225,15 +225,17 @@ body, .app-container.general {
 .puzzle-box {
   background: rgba(20, 30, 50, 0.85);
   border-radius: 18px;
-  padding: 2.5rem 2rem;
+  padding: 0 2rem 2rem 2rem;
+  padding-top: 0;
   margin: 2rem auto;
-  max-width: 540px;
+  max-width: 700px;
   box-shadow: 0 0 32px #00ffe7aa, 0 0 8px #0ff;
   border: 2px solid #00ffe7;
   position: relative;
   z-index: 1;
   transition: box-shadow 0.3s, border 0.3s, background 0.3s, opacity 0.5s;
   opacity: 1;
+  overflow: hidden; 
 }
 
 .puzzle-box.fade-out {
@@ -556,3 +558,105 @@ body, .app-container.general {
   margin-top: 1rem;
   font-size: 1.1rem;
 }
+
+.hotspot-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  outline: none;
+  transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotspot-btn.found .hotspot-icon {
+  filter: grayscale(0.7) brightness(0.7);
+  opacity: 0.7;
+}
+
+.hotspot-btn.hotspot-hidden {
+  border: 1px dashed rgba(200,220,255,0.25) !important;
+  /* Or use a solid border, but very faint: */
+  /* border: 1px solid rgba(200,220,255,0.08) !important; */
+  box-shadow: none;
+}
+
+.hotspot-btn.hotspot-disabled {
+  cursor: default !important;
+  pointer-events: none;
+  opacity: 0.8; 
+}
+
+.hotspot-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  display: block;
+}
+
+.clue-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10,20,40,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.clue-content {
+  background: #222;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 32px #00ffe7aa;
+  color: #fff;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
+  text-align: center;
+}
+
+.clue-content img {
+  border-radius: 8px;
+  box-shadow: 0 0 12px #ff1744cc;
+  max-width: 120px;
+  margin: 1rem auto;
+  display: block;
+}
+
+.bridge-puzzle {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.bridge-image {
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-top: 0;
+  border-radius: 16px 16px 0 0;
+  display: block;
+  box-shadow: none;
+}
+
+/* .bridge-puzzle {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.bridge-image {
+  width: 100%;
+  display: block;
+  border-radius: 16px 16px 0 0;
+  margin: 0;
+} */

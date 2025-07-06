@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import puzzles from "./data/futuraPuzzles";
-import TextPuzzle from "./components/TextPuzzle";
-import ImagePuzzle from "./components/ImagePuzzle";
-import InteractivePuzzle from "./components/InteractivePuzzle";
 import HintArea from "./components/HintArea";
 import LandingPage from "./LandingPage";
 import GridOverlay from "./components/GridOverlay";
-import "./App.css";
+import puzzles from "./data/futuraPuzzles";
 import IntroPuzzle from "./components/IntroPuzzle";
+import TextPuzzle from "./components/TextPuzzle";
+import ImagePuzzle from "./components/ImagePuzzle";
+import InteractivePuzzle from "./components/InteractivePuzzle";
+import BridgePuzzle from "./components/BridgePuzzle";
+import "./App.css";
 
 // Helper to get/set hint counts per puzzle in localStorage
 const getHintCounts = () => {
@@ -78,6 +79,7 @@ function App() {
     localStorage.removeItem("escapeRoomCurrent");
     localStorage.removeItem("escapeRoomHintCounts");
     localStorage.setItem("escapeRoomPage", "landing");
+    localStorage.removeItem("bridge-found-4");
     setCurrent(0);
     setHintCount(0);
     setInput("");
@@ -93,8 +95,30 @@ function App() {
   };
 
   const handleAnswer = (answer) => {
-    // If answer is provided (from single-answer puzzles)
-    if (typeof answer === "string" && puzzle.answer) {
+    if (puzzle.type === "intro") {
+      setFade(true);
+      setTimeout(() => {
+        setCurrent((prev) => prev + 1);
+        setFade(false);
+        setMessage("");
+      }, 800);
+      return;
+    }
+    if (puzzle.type === "text") {
+      setFade(true);
+      setTimeout(() => {
+        setCurrent((prev) => prev + 1);
+        setFade(false);
+        setMessage("");
+      }, 800);
+      return;
+    }
+    // Only check answer for single-answer puzzles
+    if (
+      typeof answer === "string" &&
+      puzzle.answer &&
+      puzzle.type !== "bridge"
+    ) {
       if (
         (answer || "").trim().toLowerCase() ===
         (puzzle.answer || "").trim().toLowerCase()
@@ -109,8 +133,10 @@ function App() {
       } else {
         setMessage("Incorrect, try again!");
       }
-    } else {
-      // For multi-question puzzles, just advance with no message
+      return;
+    }
+    // Fallback: if called with no argument (from BridgePuzzle), advance
+    if (answer === undefined && puzzle.type === "bridge") {
       setFade(true);
       setTimeout(() => {
         setCurrent((prev) => prev + 1);
@@ -174,32 +200,17 @@ function App() {
 
   // Puzzle page
   return (
-    <div
-      className={
-        isFuturaRoom ? "app-container sci-fi" : "app-container general"
-      }
-    >
-      {isFuturaRoom && <GridOverlay />}
-      <h1>Futura</h1>
-      <div className={`puzzle-box${fade ? " fade-out" : ""}`}>
-        {puzzle.type === "intro" && (
-          <IntroPuzzle puzzle={puzzle} onSolve={handleAnswer} />
-        )}
-        {puzzle.type === "text" && (
-          <TextPuzzle questions={puzzle.questions} onSolve={handleAnswer} />
-        )}
-        {puzzle.type === "image" && (
+    <div className={`puzzle-box${fade ? " fade-out" : ""}`}>
+      {puzzle.type === "intro" && (
+        <IntroPuzzle puzzle={puzzle} onSolve={handleAnswer} />
+      )}
+      {puzzle.type === "text" && (
+        <TextPuzzle questions={puzzle.questions} onSolve={handleAnswer} />
+      )}
+      {puzzle.type === "image" && (
+        <>
           <ImagePuzzle image={puzzle.image} question={puzzle.question} />
-        )}
-        {puzzle.type === "interactive" && (
-          <InteractivePuzzle
-            question={puzzle.question}
-            onSolve={handleAnswer}
-          />
-        )}
-        {puzzle.type !== "interactive" &&
-          puzzle.type !== "text" &&
-          puzzle.answer && (
+          {puzzle.answer && (
             <form onSubmit={handleSubmit} className="answer-form">
               <input
                 type="text"
@@ -211,13 +222,36 @@ function App() {
               <button type="submit">Submit</button>
             </form>
           )}
-        {message && <div className="message">{message}</div>}
-        <HintArea
-          hints={puzzle.hints}
-          revealedCount={hintCount}
-          onShowHint={handleShowHint}
-        />
-      </div>
+        </>
+      )}
+      {puzzle.type === "interactive" && (
+        <InteractivePuzzle question={puzzle.question} onSolve={handleAnswer} />
+      )}
+      {puzzle.type === "bridge" && (
+        <BridgePuzzle puzzle={puzzle} onSolve={handleAnswer} />
+      )}
+      {/* Only show the generic answer form for puzzles that are not handled above */}
+      {!["intro", "text", "image", "interactive", "bridge"].includes(
+        puzzle.type
+      ) &&
+        puzzle.answer && (
+          <form onSubmit={handleSubmit} className="answer-form">
+            <input
+              type="text"
+              value={input}
+              onChange={handleInput}
+              placeholder="Your answer"
+              autoFocus
+            />
+            <button type="submit">Submit</button>
+          </form>
+        )}
+      {message && <div className="message">{message}</div>}
+      <HintArea
+        hints={puzzle.hints}
+        revealedCount={hintCount}
+        onShowHint={handleShowHint}
+      />
       <div className="progress">
         Puzzle {current + 1} of {puzzles.length}
       </div>
