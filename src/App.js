@@ -5,6 +5,7 @@ import ImagePuzzle from "./components/ImagePuzzle";
 import InteractivePuzzle from "./components/InteractivePuzzle";
 import HintArea from "./components/HintArea";
 import LandingPage from "./LandingPage";
+import GridOverlay from "./components/GridOverlay";
 import "./App.css";
 
 // Helper to get/set hint counts per puzzle in localStorage
@@ -24,7 +25,7 @@ function App() {
   });
 
   // For future expansion
-  const [selectedRoom, setSelectedRoom] = useState("mystery");
+  const [selectedRoom, setSelectedRoom] = useState("futura");
 
   // Load progress from localStorage or default to 0
   const [current, setCurrent] = useState(() => {
@@ -40,8 +41,10 @@ function App() {
 
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
+  const [fade, setFade] = useState(false);
 
   const puzzle = puzzles[current];
+  const isFuturaRoom = page === "puzzle" && selectedRoom === "futura";
 
   // Save progress to localStorage whenever current or hintCount changes
   useEffect(() => {
@@ -92,9 +95,11 @@ function App() {
   const handleAnswer = (answer) => {
     if (answer.trim().toLowerCase() === puzzle.answer.trim().toLowerCase()) {
       setMessage("Correct! Moving to the next puzzle...");
+      setFade(true);
       setTimeout(() => {
         setCurrent((prev) => prev + 1);
-      }, 1200);
+        setFade(false);
+      }, 800);
     } else {
       setMessage("Incorrect, try again!");
     }
@@ -111,24 +116,45 @@ function App() {
 
   // If on landing page
   if (page === "landing") {
-    return <LandingPage onStart={handleStart} />;
+    return (
+      <div className="app-container general">
+        <LandingPage onStart={handleStart} />
+      </div>
+    );
   }
 
   // If finished all puzzles
   if (current >= puzzles.length) {
     return (
-      <div className="app-container">
-        <h1>🎉 Congratulations! You escaped! 🎉</h1>
-        <button onClick={handleRestart}>Back to Home</button>
+      <div
+        className={
+          isFuturaRoom ? "app-container sci-fi" : "app-container general"
+        }
+      >
+        {isFuturaRoom && <GridOverlay />}
+        <div className="progress">
+          <h1>👾 Congratulations! You escaped! 👾</h1>
+          <button
+            className="sci-fi-btn sci-fi-btn-secondary"
+            onClick={handleRestart}
+          >
+            Back to Home
+          </button>
+        </div>
       </div>
     );
   }
 
   // Puzzle page
   return (
-    <div className="app-container">
-      <h1>Mystery Room</h1>
-      <div className="puzzle-box">
+    <div
+      className={
+        isFuturaRoom ? "app-container sci-fi" : "app-container general"
+      }
+    >
+      {isFuturaRoom && <GridOverlay />}
+      <h1>Futura</h1>
+      <div className={`puzzle-box${fade ? " fade-out" : ""}`}>
         {puzzle.type === "text" && <TextPuzzle question={puzzle.question} />}
         {puzzle.type === "image" && (
           <ImagePuzzle image={puzzle.image} question={puzzle.question} />
@@ -161,13 +187,21 @@ function App() {
       <div className="progress">
         Puzzle {current + 1} of {puzzles.length}
       </div>
-      <div style={{ marginTop: "1rem" }}>
+      <div className="sci-fi-buttons">
         {current > 0 && (
-          <button onClick={handleBack} style={{ marginRight: "1rem" }}>
+          <button
+            className="sci-fi-btn sci-fi-btn-secondary"
+            onClick={handleBack}
+          >
             Back
           </button>
         )}
-        <button onClick={handleRestart}>Restart</button>
+        <button
+          className="sci-fi-btn sci-fi-btn-secondary"
+          onClick={handleRestart}
+        >
+          Restart
+        </button>
       </div>
     </div>
   );
