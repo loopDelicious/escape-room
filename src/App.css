@@ -32,6 +32,7 @@ body, .app-container.general {
   flex-direction: column;
   align-items: center;
   transition: box-shadow 0.3s;
+  position: relative;
 }
 
 .room-card h2 {
@@ -57,7 +58,29 @@ body, .app-container.general {
   color: #fff;
 }
 
-/* Sci-Fi Room Card on Landing Page */
+.difficulty-label {
+  position: absolute;
+  left: 18px;
+  bottom: 14px;
+  font-size: 0.95em;
+  color: #b0c4d8;
+  opacity: 0.85;
+  letter-spacing: 1px;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: rgba(20,30,50,0.7);
+  padding: 0.18em 0.9em;
+  border-radius: 1em;
+  z-index: 3;
+  box-shadow: 0 0 4px #00ffe733;
+  border: 1px solid #233;
+  pointer-events: none;
+  transition: background 0.2s, color 0.2s;
+}
+.room-card .difficulty-label {
+  font-weight: 500;
+}
+
+/* Futura Sci-Fi Room Card on Landing Page */
 .sci-fi-room-card {
   position: relative;
   overflow: hidden; /* Ensures overlay stays inside card */
@@ -90,6 +113,51 @@ body, .app-container.general {
 
 .sci-fi-room-card .sci-fi-btn {
   margin-top: 1rem;
+}
+
+.futura-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: rgba(20, 30, 50, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 0 32px #00ffe7aa, 0 0 8px #0ff;
+  max-width: 440px;
+  margin: 2.5rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+.futura-intro-content h1 {
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7, 0 0 2px #fff;
+  font-size: 2.1rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.futura-intro-content p {
+  color: #e0e7ef;
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.futura-intro-content .intro-image {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 0 24px #00ffe7cc, 0 0 4px #fff;
+  background: #101c2c;
+  margin-bottom: 0.5rem;
+  margin-top: -2.5rem;
+  border: 3px solid #00ffe7;
 }
 
 /* Sci-Fi (Futura Room) Styles */

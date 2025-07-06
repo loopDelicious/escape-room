@@ -1,5 +1,6 @@
 import React from "react";
-import GridOverlay from "./components/GridOverlay"; // Adjust path if needed
+import GridOverlay from "./components/GridOverlay";
+import rooms from "./data/rooms";
 
 export default function LandingPage({ onStart }) {
   return (
@@ -7,23 +8,34 @@ export default function LandingPage({ onStart }) {
       <h1>Welcome to Escape Room!</h1>
       <p>Choose a room to begin your adventure. More rooms coming soon!</p>
       <div className="room-list">
-        <div className="room-card sci-fi-room-card">
-          {/* Grid overlay only inside this card */}
-          <div className="card-grid-overlay">
-            <GridOverlay />
-          </div>
-          <div className="sci-fi-room-card-content">
-            <h2>Futura</h2>
-            <p>The crew vanished. Their secrets remain. Can you survive?</p>
-            <button
-              className="sci-fi-btn sci-fi-btn-secondary"
-              onClick={onStart}
+        {rooms.map((room) => (
+          <div
+            key={room.id}
+            className={`room-card ${room.className || ""}`}
+            style={{ position: "relative" }}
+          >
+            {room.skin === "grid" && (
+              <div className="card-grid-overlay">
+                <GridOverlay />
+              </div>
+            )}
+            <div
+              className={`${room.className ? room.className + "-content" : ""}`}
             >
-              Start
-            </button>
+              <h2>{room.name}</h2>
+              <p>{room.description}</p>
+              <button
+                className="sci-fi-btn sci-fi-btn-secondary"
+                onClick={() => onStart(room.id)}
+              >
+                Start
+              </button>
+            </div>
+            {room.difficulty && (
+              <span className="difficulty-label">{room.difficulty}</span>
+            )}
           </div>
-        </div>
-        {/* Future rooms can be added here */}
+        ))}
       </div>
     </div>
   );

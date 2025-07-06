@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import puzzles from "./puzzles";
+import puzzles from "./data/futuraPuzzles";
 import TextPuzzle from "./components/TextPuzzle";
 import ImagePuzzle from "./components/ImagePuzzle";
 import InteractivePuzzle from "./components/InteractivePuzzle";
@@ -7,6 +7,7 @@ import HintArea from "./components/HintArea";
 import LandingPage from "./LandingPage";
 import GridOverlay from "./components/GridOverlay";
 import "./App.css";
+import IntroPuzzle from "./components/IntroPuzzle";
 
 // Helper to get/set hint counts per puzzle in localStorage
 const getHintCounts = () => {
@@ -59,10 +60,9 @@ function App() {
     setHintCounts(counts);
   }, [hintCount, current]);
 
-  // When moving to a new puzzle, restore hint count for that puzzle
+  // When moving to a new puzzle, restore hint count to 0 and reset input/message
   useEffect(() => {
-    const counts = getHintCounts();
-    setHintCount(counts[current] || 0);
+    setHintCount(0);
     setInput("");
     setMessage("");
   }, [current]);
@@ -173,6 +173,9 @@ function App() {
       {isFuturaRoom && <GridOverlay />}
       <h1>Futura</h1>
       <div className={`puzzle-box${fade ? " fade-out" : ""}`}>
+        {puzzle.type === "intro" && (
+          <IntroPuzzle puzzle={puzzle} onSolve={handleAnswer} />
+        )}
         {puzzle.type === "text" && (
           <TextPuzzle questions={puzzle.questions} onSolve={handleAnswer} />
         )}

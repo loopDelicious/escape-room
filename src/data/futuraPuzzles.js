@@ -1,5 +1,18 @@
-// src/puzzles.js
 const puzzles = [
+  {
+    id: 0,
+    type: "intro",
+    title: "Welcome to Futura",
+    description:
+      "The crew of the Futura vanished without a trace. Their secrets remain locked in the ship's systems. Can you solve the puzzles and uncover the truth?",
+    image: "/spaceship.png",
+    className: "futura-intro-content",
+    hints: [
+      "Explore the ship's systems carefully.",
+      "Pay attention to the clues left behind.",
+      "Work together to solve the puzzles.",
+    ],
+  },
   {
     id: 1,
     type: "text",
@@ -44,7 +57,7 @@ const puzzles = [
   {
     id: 2,
     type: "image",
-    image: "/lab.png", // Place image in public/
+    image: "/lab.png",
     question:
       "It looks like Dr. Chien left her laboratory in a hurry. Find the values from her research and combine them to unlock the emergency containment protocol.",
     answer: "42",
