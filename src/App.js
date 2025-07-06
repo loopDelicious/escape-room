@@ -133,7 +133,10 @@ function App() {
       >
         {isFuturaRoom && <GridOverlay />}
         <div className="progress">
-          <h1>👾 Congratulations! You escaped! 👾</h1>
+          <h1>
+            👾 Congratulations! You contained the outbreak and saved the
+            station. 👾
+          </h1>
           <button
             className="sci-fi-btn sci-fi-btn-secondary"
             onClick={handleRestart}

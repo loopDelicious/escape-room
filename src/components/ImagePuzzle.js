@@ -20,7 +20,7 @@ export default function ImagePuzzle({ image, question }) {
   // Flashlight size and softness
   const radius = 35; // main visible area
   const glow = 40; // soft edge width
-  const overlayOpacity = 0.95; // 0 = transparent, 1 = fully black
+  const overlayOpacity = 0.9; // 0 = transparent, 1 = fully black
 
   // The gradient will have:
   // 0% - fully transparent (center)

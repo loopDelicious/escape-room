@@ -310,3 +310,161 @@ body, .app-container.general {
   user-select: none;
   filter: drop-shadow(0 0 8px #00ffe7cc);
 }
+
+/* Flora, Slime, or Critter */
+.card-grid,
+.chambers {
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.card-3d {
+  width: 80px;
+  height: 120px;
+  perspective: 600px;
+  border-radius: 12px;
+  position: relative;
+  transition: opacity 0.2s;
+  margin-bottom: 1rem;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+  transform-style: preserve-3d;
+}
+
+.card-3d.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #232526 0%, #0f2027 100%);
+  box-shadow: 0 0 8px #00ffe7aa;
+}
+
+.card-back-face {
+  background: #222;
+  box-shadow: 0 0 16px #a259ffcc, 0 0 8px #00ffe7cc;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.card-3d.sorted .card-inner {
+  filter: grayscale(0.7) brightness(0.7);
+}
+
+.chambers {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chamber.chamber-img {
+  width: 120px;
+  height: 120px;
+  background: rgba(20, 30, 50, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 16px #00ffe7cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border 0.2s;
+  border: 2.5px solid #00ffe7;
+  position: relative;
+}
+
+.chamber-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px #00ffe7cc);
+}
+
+@media (max-width: 600px) {
+  .card-3d {
+    width: 60px;
+    height: 90px;
+    border-radius: 8px;
+  }
+  .chamber.chamber-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+  }
+  .chamber-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .card-img {
+    border-radius: 8px;
+  }
+  .card-grid, .chambers {
+    max-width: 320px;
+    gap: 0.4rem;
+  }
+}
+
+.chamber-correct {
+  box-shadow: 0 0 32px #00ffb3cc, 0 0 16px #00ffe7cc;
+  border-color: #00ffb3;
+  animation: chamber-glow-correct 0.7s;
+}
+
+.chamber-incorrect {
+  box-shadow: 0 0 32px #ff00cccc, 0 0 16px #a259ffcc;
+  border-color: #ff00cc;
+  animation: chamber-glow-incorrect 0.7s;
+}
+
+@keyframes chamber-glow-correct {
+  0% { box-shadow: 0 0 0 #00ffb3cc; }
+  50% { box-shadow: 0 0 32px #00ffb3cc, 0 0 16px #00ffe7cc; }
+  100% { box-shadow: 0 0 0 #00ffb3cc; }
+}
+
+@keyframes chamber-glow-incorrect {
+  0% { box-shadow: 0 0 0 #ff00cccc; }
+  50% { box-shadow: 0 0 32px #ff00cccc, 0 0 16px #a259ffcc; }
+  100% { box-shadow: 0 0 0 #ff00cccc; }
+}
+
+.sort-progress {
+  text-align: center;
+  color: #00ffe7;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}

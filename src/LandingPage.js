@@ -14,7 +14,7 @@ export default function LandingPage({ onStart }) {
           </div>
           <div className="sci-fi-room-card-content">
             <h2>Futura</h2>
-            <p>Unravel the secrets and escape the Futura Room.</p>
+            <p>The crew vanished. Their secrets remain.</p>
             <button
               className="sci-fi-btn sci-fi-btn-secondary"
               onClick={onStart}

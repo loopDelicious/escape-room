@@ -15,25 +15,23 @@ const puzzles = [
   {
     id: 2,
     type: "image",
-    image: "/lock.png", // Place image in public/
-    question: "Find the hidden number in the image.",
+    image: "/lab.png", // Place image in public/
+    question:
+      "It looks like Dr. Chien left her laboratory in a hurry. Find the values from her research and combine them to unlock the emergency containment protocol.",
     answer: "42",
     hints: [
       "Look closely at the shadows.",
       "Try adjusting your screen brightness.",
-      "The number is in the bottom right corner.",
+      "Find 3 values on the glass.",
     ],
   },
   {
     id: 3,
     type: "interactive",
-    question: "Drag the key to the lock to unlock the next level.",
+    question:
+      "Some of the specimens have escaped! Help catch them to unlock the next level.",
     answer: "unlocked",
-    hints: [
-      "Try dragging the key image.",
-      "The lock is waiting for the key.",
-      "Drop the key onto the lock.",
-    ],
+    hints: ["Try dragging a specimen to the correct chamber."],
   },
 ];
 
