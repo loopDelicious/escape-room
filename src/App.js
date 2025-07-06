@@ -152,6 +152,15 @@ function App() {
             👾 Congratulations! You contained the outbreak and saved the
             station. 👾
           </h1>
+          <p>
+            Thanks for playing! More puzzles are on the way. Want to support
+            future builds?
+          </p>
+          <p align="left">
+            <a href="https://coff.ee/joycejetson">
+              <img src="/bmc-button.png" width="150" alt="Buy Me a Coffee" />
+            </a>
+          </p>
           <button
             className="sci-fi-btn sci-fi-btn-secondary"
             onClick={handleRestart}
