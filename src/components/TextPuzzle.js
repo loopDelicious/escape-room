@@ -47,7 +47,7 @@ export default function TextPuzzle({ questions, onSolve }) {
     return (
       <div className="text-puzzle">
         <div className="riddle-number">
-          Riddle {current + 1} of {questions.length}
+          Mini challenge {current + 1} of {questions.length}
         </div>
         <div className="riddle-question">{questions[current].riddle}</div>
         <form onSubmit={handleSubmit} className="answer-form">

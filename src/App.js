@@ -8,6 +8,7 @@ import TextPuzzle from "./components/TextPuzzle";
 import ImagePuzzle from "./components/ImagePuzzle";
 import InteractivePuzzle from "./components/InteractivePuzzle";
 import BridgePuzzle from "./components/BridgePuzzle";
+import FuturaSuccess from "./components/FuturaSuccess";
 import "./App.css";
 
 // Helper to get/set hint counts per puzzle in localStorage
@@ -167,34 +168,10 @@ function App() {
   // If finished all puzzles
   if (current >= puzzles.length) {
     return (
-      <div
-        className={
-          isFuturaRoom ? "app-container sci-fi" : "app-container general"
-        }
-      >
-        {isFuturaRoom && <GridOverlay />}
-        <div className="progress">
-          <h1>
-            👾 Congratulations! You contained the outbreak and saved the
-            station. 👾
-          </h1>
-          <p>
-            Thanks for playing! More puzzles are on the way. Want to support
-            future builds?
-          </p>
-          <p align="left">
-            <a href="https://coff.ee/joycejetson">
-              <img src="/bmc-button.png" width="150" alt="Buy Me a Coffee" />
-            </a>
-          </p>
-          <button
-            className="sci-fi-btn sci-fi-btn-secondary"
-            onClick={handleRestart}
-          >
-            Back to Home
-          </button>
-        </div>
-      </div>
+      <FuturaSuccess
+        isFuturaRoom={isFuturaRoom}
+        handleRestart={handleRestart}
+      />
     );
   }
 

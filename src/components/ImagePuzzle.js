@@ -43,29 +43,13 @@ export default function ImagePuzzle({ image, question }) {
       <div
         className="flashlight-image-container"
         ref={containerRef}
-        style={{ position: "relative", display: "inline-block" }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <img
-          src={image}
-          alt="Puzzle"
-          className="puzzle-image"
-          style={{ display: "block" }}
-        />
+        <img src={image} alt="Puzzle" />
         <div
-          className="flashlight-overlay"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            pointerEvents: "none",
-            background: gradient,
-            transition: mouse.inside ? "background 0.1s" : "background 0.3s",
-            borderRadius: "10px",
-          }}
+          className={`flashlight-overlay ${mouse.inside ? "fast" : "slow"}`}
+          style={{ background: gradient }}
         />
       </div>
       <p>{question}</p>

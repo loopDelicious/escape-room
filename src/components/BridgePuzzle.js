@@ -36,14 +36,12 @@ export default function BridgePuzzle({ puzzle, onSolve }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      (input || "").trim().toLowerCase() ===
-      (puzzle.answer || "").trim().toLowerCase()
-    ) {
+    // Remove all spaces and compare lowercase
+    const normalize = (str) => (str || "").replace(/\s+/g, "").toLowerCase();
+    if (normalize(input) === normalize(puzzle.answer)) {
       setMessage("Correct! Proceeding...");
       setTimeout(() => {
         onSolve && onSolve();
-        // Optionally clear found clues after solving
         localStorage.removeItem(storageKey);
       }, 1000);
     } else {

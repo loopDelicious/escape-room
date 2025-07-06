@@ -156,7 +156,7 @@ body, .app-container.general {
   box-shadow: 0 0 24px #00ffe7cc, 0 0 4px #fff;
   background: #101c2c;
   margin-bottom: 0.5rem;
-  margin-top: -2.5rem;
+  margin-top: 10px;
   border: 3px solid #00ffe7;
 }
 
@@ -203,7 +203,7 @@ body, .app-container.general {
 }
 
 .sci-fi-btn-secondary {
-  background: linear-gradient(90deg, #a259ff 0%, #ff00cc 100%);
+  background: #232526;
   color: #fff;
   box-shadow: 0 0 16px #ff00cc99, 0 0 2px #fff;
 }
@@ -327,8 +327,8 @@ body, .app-container.general {
 }
 
 .hint-area button {
-  background: linear-gradient(90deg, #00ffe7 0%, #0ff 100%);
-  color: #222;
+  background: #232526;
+  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 0.4rem 1rem;
@@ -370,6 +370,7 @@ body, .app-container.general {
   color: #00ffe7;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 .riddle-question {
@@ -381,9 +382,41 @@ body, .app-container.general {
 
 .flashlight-image-container {
   position: relative;
-  display: inline-block;
-  border-radius: 10px;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  border-radius: 10px 10px 0 0;
   overflow: hidden;
+  background: red;
+}
+
+.flashlight-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 16px #00ffe7cc, 0 0 8px #00ffe7aa;
+  margin: 0;
+}
+
+
+.flashlight-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 10px;
+  transition: background 0.3s; /* default transition */
+}
+
+.flashlight-overlay.fast {
+  transition: background 0.1s;
+}
+
+.flashlight-overlay.slow {
+  transition: background 0.3s;
 }
 
 .interactive-area {
@@ -392,13 +425,6 @@ body, .app-container.general {
   align-items: center;
   gap: 2rem;
   margin: 1rem 0;
-}
-
-.key, .lock {
-  width: 64px;
-  height: 64px;
-  user-select: none;
-  filter: drop-shadow(0 0 8px #00ffe7cc);
 }
 
 /* Flora, Slime, or Critter */
@@ -615,7 +641,7 @@ body, .app-container.general {
   padding: 2rem;
   box-shadow: 0 0 32px #00ffe7aa;
   color: #fff;
-  max-width: 90vw;
+  max-width: 60vw;
   max-height: 80vh;
   overflow: auto;
   text-align: center;
@@ -633,30 +659,47 @@ body, .app-container.general {
   position: relative;
   width: 100%;
   height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .bridge-image {
   width: calc(100% + 4rem);
   margin-left: -2rem;
   margin-right: -2rem;
-  margin-top: 0;
   border-radius: 16px 16px 0 0;
   display: block;
   box-shadow: none;
-}
-
-/* .bridge-puzzle {
-  position: relative;
-  width: 100%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
 }
 
-.bridge-image {
-  width: 100%;
-  display: block;
-  border-radius: 16px 16px 0 0;
-  margin: 0;
-} */
+.final-futura-success {
+  color: #fff;
+  text-shadow:
+    0 0 8px #ff00cc,
+    0 0 16px #ff00cc,
+    0 0 32px #ff00cc88,
+    0 0 2px #fff;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 2px;
+  font-size: 2.2rem;
+  text-align: center;
+  animation: futura-pulse-shadow 2s infinite alternate;
+}
+
+@keyframes futura-pulse-shadow {
+  0% {
+    text-shadow:
+      0 0 8px #ff00cc,
+      0 0 16px #ff00cc,
+      0 0 32px #ff00cc88,
+      0 0 2px #fff;
+  }
+  100% {
+    text-shadow:
+      0 0 32px #ff00cc,
+      0 0 64px #ff00cc,
+      0 0 128px #ff00cc,
+      0 0 8px #fff;
+  }
+}

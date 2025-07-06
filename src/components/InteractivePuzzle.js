@@ -54,7 +54,6 @@ const CARD_DATA = [
   },
 ];
 
-// Chamber images (replace with your own abstract icons)
 const CHAMBERS = [
   { id: "flora", image: "/chambers/flora.png", alt: "Flora Chamber" },
   { id: "slime", image: "/chambers/slime.png", alt: "Slime Chamber" },
@@ -112,7 +111,7 @@ export default function InteractivePuzzle({ onSolve, question }) {
       setCards(newCards);
       setCurrentCard(null);
       setSolvedCount(newSolved);
-      setMessage("Correct!");
+      setMessage("");
 
       setTimeout(() => setChamberHighlight({}), 700);
 
