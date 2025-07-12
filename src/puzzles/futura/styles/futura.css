@@ -281,7 +281,7 @@
 .riddle-number {
   font-size: 1.2rem;
   color: #00ffe7;
-  margin-bottom: 1rem;
+  margin: 1rem;
   text-shadow: 0 0 4px #00ffe7;
 }
 
@@ -404,41 +404,45 @@
 }
 
 .card-3d.sorted .card-inner {
-  filter: grayscale(0.7) brightness(0.7);
   position: relative;
 }
 
+.card-3d.sorted .card-inner {
+  position: relative;
+}
+
+.card-3d.sorted .card-img {
+  filter: grayscale(0.7) brightness(0.7);
+  opacity: 0;
+}
+
 .card-3d.sorted .card-inner::after {
-  content: "✓";
+  content: "✔";
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scaleX(-1);
-  font-size: 2rem;
+  transform: translate(-50%, -50%) rotateY(180deg);
+  font-size: 3rem;
   font-weight: bold;
   color: #00ffb3;
   text-shadow: 0 0 8px #00ffb3, 0 0 4px #00ffb3;
-  z-index: 10;
-  background: rgba(0, 255, 179, 0.1);
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1000;
   animation: success-pulse 2s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes success-pulse {
   0%, 100% {
-    transform: translate(-50%, -50%) scaleX(-1) scale(1);
+    transform: translate(-50%, -50%) rotateY(180deg) scale(1);
     opacity: 0.8;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(-1) scale(1.1);
+    transform: translate(-50%, -50%) rotateY(180deg) scale(1.1);
     opacity: 1;
   }
 }
+
+
 
 .chambers {
   width: 100%;
@@ -446,7 +450,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem;
 }
 
 .chamber.chamber-img {
