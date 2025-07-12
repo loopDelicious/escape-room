@@ -1,0 +1,716 @@
+/* Futura Sci-Fi Room Card on Landing Page */
+.sci-fi-room-card {
+  position: relative;
+  overflow: hidden; /* Ensures overlay stays inside card */
+  background: rgba(20, 30, 50, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 0 32px #00ffe7aa, 0 0 8px #0ff;
+  border: 2px solid #00ffe7;
+  color: #e0e7ef;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  text-shadow: 0 0 8px #00ffe7, 0 0 2px #fff;
+  z-index: 1;
+}
+
+.card-grid-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sci-fi-room-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.sci-fi-room-card h2 {
+  color: #00ffe7;
+  text-shadow: 0 0 4px #00ffe7;
+}
+
+.sci-fi-room-card .sci-fi-btn {
+  margin-top: 1rem;
+}
+
+.futura-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: rgba(20, 30, 50, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 0 32px #00ffe7aa, 0 0 8px #0ff;
+  max-width: 440px;
+  margin: 2.5rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+.futura-intro-content h1 {
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7, 0 0 2px #fff;
+  font-size: 2.1rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.futura-intro-content p {
+  color: #e0e7ef;
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.futura-intro-content .intro-image {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 0 24px #00ffe7cc, 0 0 4px #fff;
+  background: #101c2c;
+  margin-bottom: 0.5rem;
+  margin-top: 10px;
+  border: 3px solid #00ffe7;
+}
+
+/* Sci-Fi (Futura Room) Styles */
+.app-container.sci-fi {
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+  min-height: 100vh;
+  color: #e0e7ef;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.sci-fi-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0 2.5rem 0; /* top and bottom margin */
+}
+
+.sci-fi-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #00ffe7 0%, #0ff 100%);
+  color: #222;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 16px #00ffe7cc, 0 0 2px #fff;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+  margin: 0;
+}
+
+.sci-fi-btn:hover {
+  background: linear-gradient(90deg, #0ff 0%, #00ffe7 100%);
+  color: #111;
+  box-shadow: 0 0 24px #00ffe7ee, 0 0 4px #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.sci-fi-btn-secondary {
+  background: #232526;
+  color: #fff;
+  box-shadow: 0 0 16px #ff00cc99, 0 0 2px #fff;
+}
+
+.sci-fi-btn-secondary:hover {
+  background: linear-gradient(90deg, #ff00cc 0%, #a259ff 100%);
+  color: #fff;
+  box-shadow: 0 0 24px #ff00ccee, 0 0 4px #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.app-container.sci-fi h1, 
+.app-container.sci-fi h2, 
+.app-container.sci-fi h4 {
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #00ffe7, 0 0 2px #fff;
+}
+
+.puzzle-box {
+  background: rgba(20, 30, 50, 0.85);
+  border-radius: 18px;
+  padding: 0 2rem 2rem 2rem;
+  padding-top: 0;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 0 32px #00ffe7aa, 0 0 8px #0ff;
+  border: 2px solid #00ffe7;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.3s, border 0.3s, background 0.3s, opacity 0.5s;
+  opacity: 1;
+  overflow: hidden; 
+}
+
+.puzzle-box.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.puzzle-content {
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+}
+
+.puzzle-image {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 16px #00ffe7cc;
+  border: 1.5px solid #00ffe7;
+}
+
+.answer-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.answer-form input {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1.5px solid #00ffe7;
+  background: #101c2c;
+  color: #fff;
+  width: 60%;
+  font-size: 1.1rem;
+  outline: none;
+  box-shadow: 0 0 8px #00ffe7aa;
+  transition: border 0.2s;
+}
+
+.answer-form input:focus {
+  border-color: #0ff;
+  box-shadow: 0 0 12px #00ffe7cc;
+}
+
+.answer-form button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background: #00ffe7;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00ffe7aa;
+  transition: background 0.2s;
+}
+
+.answer-form button:hover {
+  background: #0ff;
+  box-shadow: 0 0 12px #00ffe7cc;
+}
+
+.message {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: bold;
+  color: #00ffe7;
+  text-shadow: 0 0 4px #00ffe7;
+}
+
+.hint-area {
+  background: rgba(20, 30, 50, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid #00ffe7;
+  box-shadow: 0 0 16px #00ffe7aa;
+}
+
+.hint-area h4 {
+  color: #00ffe7;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 4px #00ffe7;
+}
+
+.hint-area ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hint-area button {
+  background: transparent;
+  border: 1px solid #00ffe7;
+  color: #00ffe7;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.hint-area button:hover {
+  background: rgba(0, 255, 231, 0.1);
+}
+
+.progress {
+  text-align: center;
+  margin: 1.5rem 0;
+  font-weight: bold;
+  color: #00ffe7;
+  text-shadow: 0 0 4px #00ffe7;
+  font-size: 1.1rem;
+}
+
+.progress .sci-fi-btn {
+  margin-top: 0.5rem;
+}
+
+.text-puzzle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.riddle-number {
+  font-size: 1.2rem;
+  color: #00ffe7;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 4px #00ffe7;
+}
+
+.riddle-question {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.flashlight-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 24px #00ffe7cc;
+}
+
+.flashlight-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 2px solid #00ffe7;
+}
+
+.flashlight-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.flashlight-overlay.fast {
+  transition: opacity 0.1s ease;
+}
+
+.flashlight-overlay.slow {
+  transition: opacity 0.5s ease;
+}
+
+.interactive-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.card-grid,
+.chambers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.8rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.card-3d {
+  width: 80px;
+  height: 120px;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card-3d.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #00ffe7cc;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+
+.card-3d.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #00ffe7 0%, #0ff 100%);
+  box-shadow: 0 0 16px #00ffe7cc;
+}
+
+.card-back-face {
+  background: #101c2c;
+  transform: rotateY(180deg);
+  border: 2px solid #00ffe7;
+  box-shadow: 0 0 16px #00ffe7cc;
+}
+
+.card-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.card-3d.sorted .card-inner {
+  filter: grayscale(0.7) brightness(0.7);
+  position: relative;
+}
+
+.card-3d.sorted .card-inner::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleX(-1);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ffb3;
+  text-shadow: 0 0 8px #00ffb3, 0 0 4px #00ffb3;
+  z-index: 10;
+  background: rgba(0, 255, 179, 0.1);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: success-pulse 2s ease-in-out infinite;
+}
+
+@keyframes success-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scaleX(-1) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scaleX(-1) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.chambers {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chamber.chamber-img {
+  width: 120px;
+  height: 120px;
+  background: rgba(20, 30, 50, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 16px #00ffe7cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border 0.2s;
+  border: 2.5px solid #00ffe7;
+  position: relative;
+}
+
+.chamber-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px #00ffe7cc);
+}
+
+@media (max-width: 600px) {
+  .card-3d {
+    width: 60px;
+    height: 90px;
+    border-radius: 8px;
+  }
+  .chamber.chamber-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+  }
+  .chamber-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .card-img {
+    border-radius: 8px;
+  }
+  .card-grid, .chambers {
+    max-width: 320px;
+    gap: 0.4rem;
+  }
+}
+
+.chamber-correct {
+  box-shadow: 0 0 32px #00ffb3cc, 0 0 16px #00ffe7cc;
+  border-color: #00ffb3;
+  animation: chamber-glow-correct 0.7s;
+}
+
+.chamber-incorrect {
+  box-shadow: 0 0 32px #ff00cccc, 0 0 16px #a259ffcc;
+  border-color: #ff00cc;
+  animation: chamber-glow-incorrect 0.7s;
+}
+
+@keyframes chamber-glow-correct {
+  0% { box-shadow: 0 0 0 #00ffb3cc; }
+  50% { box-shadow: 0 0 32px #00ffb3cc, 0 0 16px #00ffe7cc; }
+  100% { box-shadow: 0 0 0 #00ffb3cc; }
+}
+
+@keyframes chamber-glow-incorrect {
+  0% { box-shadow: 0 0 0 #ff00cccc; }
+  50% { box-shadow: 0 0 32px #ff00cccc, 0 0 16px #a259ffcc; }
+  100% { box-shadow: 0 0 0 #ff00cccc; }
+}
+
+.sort-progress {
+  text-align: center;
+  color: #00ffe7;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.timer {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.timer-text {
+  color: #00ffe7;
+  text-shadow: 0 0 4px #00ffe7;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: rgba(20, 30, 50, 0.8);
+  border: 2px solid #00ffe7;
+  box-shadow: 0 0 8px #00ffe7cc;
+  transition: all 0.3s ease;
+}
+
+.timer-warning {
+  color: #ff6b6b;
+  text-shadow: 0 0 8px #ff6b6b, 0 0 4px #ff6b6b;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 12px #ff6b6bcc, 0 0 4px #ff6b6b;
+  animation: timer-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes timer-pulse {
+  0% {
+    box-shadow: 0 0 12px #ff6b6bcc, 0 0 4px #ff6b6b;
+  }
+  100% {
+    box-shadow: 0 0 20px #ff6b6bee, 0 0 8px #ff6b6b;
+  }
+}
+
+.hotspot-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  outline: none;
+  transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotspot-btn.found .hotspot-icon {
+  filter: grayscale(0.7) brightness(0.7);
+  opacity: 0.7;
+}
+
+.hotspot-btn.hotspot-hidden {
+  border: 1px dashed rgba(200,220,255,0.25) !important;
+  /* Or use a solid border, but very faint: */
+  /* border: 1px solid rgba(200,220,255,0.08) !important; */
+  box-shadow: none;
+}
+
+.hotspot-btn.hotspot-disabled {
+  cursor: default !important;
+  pointer-events: none;
+  opacity: 0.8; 
+}
+
+.hotspot-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  display: block;
+}
+
+.clue-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10,20,40,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.clue-content {
+  background: #222;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 32px #00ffe7aa;
+  color: #fff;
+  max-width: 60vw;
+  max-height: 80vh;
+  overflow: auto;
+  text-align: center;
+}
+
+.clue-content img {
+  border-radius: 8px;
+  box-shadow: 0 0 12px #ff1744cc;
+  max-width: 120px;
+  margin: 1rem auto;
+  display: block;
+}
+
+.bridge-puzzle-box {
+  padding: 0 !important;
+}
+
+.bridge-puzzle {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.bridge-image-container {
+  position: relative; 
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  max-width: 700px;
+}
+
+.bridge-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.puzzle-box,
+.bridge-puzzle-box,
+.bridge-image-container,
+.bridge-puzzle,
+img {
+  box-sizing: border-box;
+}
+
+.bridge-image {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  border-radius: 16px 16px 0 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.bridge-puzzle-box,
+.bridge-image-container {
+  max-width: 700px;
+  width: 100%;
+  /* margin: 0 auto; */
+  position: relative;
+  overflow: hidden;
+}
+
+.final-futura-success {
+  color: #fff;
+  text-shadow:
+    0 0 8px #ff00cc,
+    0 0 16px #ff00cc,
+    0 0 32px #ff00cc88,
+    0 0 2px #fff;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 2px;
+  font-size: 2.2rem;
+  text-align: center;
+  animation: futura-pulse-shadow 2s infinite alternate;
+}
+
+@keyframes futura-pulse-shadow {
+  0% {
+    text-shadow:
+      0 0 8px #ff00cc,
+      0 0 16px #ff00cc,
+      0 0 32px #ff00cc88,
+      0 0 2px #fff;
+  }
+  100% {
+    text-shadow:
+      0 0 32px #ff00cc,
+      0 0 64px #ff00cc,
+      0 0 128px #ff00cc,
+      0 0 8px #fff;
+  }
+} 

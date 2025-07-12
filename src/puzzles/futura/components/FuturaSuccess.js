@@ -1,5 +1,5 @@
 import React from "react";
-import GridOverlay from "./GridOverlay"; // adjust path if needed
+import GridOverlay from "../../../components/GridOverlay";
 
 export default function FuturaSuccess({ isFuturaRoom, handleRestart }) {
   return (

@@ -12,7 +12,6 @@ export default function LandingPage({ onStart }) {
           <div
             key={room.id}
             className={`room-card ${room.className || ""}`}
-            style={{ position: "relative" }}
           >
             {room.skin === "grid" && (
               <div className="card-grid-overlay">

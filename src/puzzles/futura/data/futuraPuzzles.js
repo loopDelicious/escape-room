@@ -59,19 +59,18 @@ const puzzles = [
     type: "image",
     image: "/lab.png",
     question:
-      "It looks like Dr. Chien left her laboratory in a hurry. Find the values from her research and combine them to unlock the emergency containment protocol.",
-    answer: "42",
+      "It looks like Dr. Chien left her laboratory in a hurry. Find the answers in her research to unlock the emergency containment protocol.",
+    answer: "84",
     hints: [
       "Look closely at the shadows.",
       "Try adjusting your screen brightness.",
-      "Find 3 values on the glass.",
     ],
   },
   {
     id: 3,
     type: "interactive",
     question:
-      "Some of the specimens have escaped! Help catch them to unlock the next level.",
+      "Some of the specimens have escaped. Help catch them to unlock the next level. Please hurry!",
     answer: "unlocked",
     hints: ["Try dragging a specimen to the correct chamber."],
   },

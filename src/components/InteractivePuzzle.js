@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Example card data (replace images with your own paths)
 const CARD_DATA = [
@@ -87,6 +87,45 @@ export default function InteractivePuzzle({ onSolve, question }) {
   const [message, setMessage] = useState("");
   const [chamberHighlight, setChamberHighlight] = useState({}); // {chamberId: "none"|"correct"|"incorrect"}
   const [selectedCard, setSelectedCard] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(30); // 30 seconds countdown
+  const [isTimerActive, setIsTimerActive] = useState(true);
+
+  // Timer effect
+  useEffect(() => {
+    let interval = null;
+    if (isTimerActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          if (prevTime <= 1) {
+            // Time's up! Reset the puzzle
+            setIsTimerActive(false);
+            setCards(
+              shuffle(CARD_DATA).map((card) => ({
+                ...card,
+                revealed: false,
+                sorted: false,
+              }))
+            );
+            setCurrentCard(null);
+            setSelectedCard(null);
+            setSolvedCount(0);
+            setMessage("Time's up! All cards have been reset.");
+            setChamberHighlight({});
+            return 30; // Reset timer
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerActive, timeLeft]);
+
+  // Reset timer when puzzle is solved
+  useEffect(() => {
+    if (solvedCount === cards.length) {
+      setIsTimerActive(false);
+    }
+  }, [solvedCount, cards.length]);
 
   const handleCardTap = (idx) => {
     if (cards[idx].sorted) return;
@@ -128,6 +167,9 @@ export default function InteractivePuzzle({ onSolve, question }) {
         setSelectedCard(null);
         setSolvedCount(0);
         setMessage("");
+        // Reset timer on incorrect move
+        setTimeLeft(30);
+        setIsTimerActive(true);
       }, 1200);
     }
   };
@@ -181,6 +223,9 @@ export default function InteractivePuzzle({ onSolve, question }) {
         setSolvedCount(0);
         setMessage("");
         setChamberHighlight({});
+        // Reset timer on incorrect move
+        setTimeLeft(30);
+        setIsTimerActive(true);
       }, 1200);
     }
   };
@@ -199,6 +244,11 @@ export default function InteractivePuzzle({ onSolve, question }) {
   return (
     <div className="puzzle-content">
       <p>{question}</p>
+      <div className="timer">
+        <span className={`timer-text ${timeLeft <= 10 ? "timer-warning" : ""}`}>
+          Time remaining: {timeLeft}s
+        </span>
+      </div>
       <div className="card-grid">
         {cards.map((card, idx) => (
           <div
