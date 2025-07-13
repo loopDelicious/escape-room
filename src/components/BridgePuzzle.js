@@ -60,6 +60,11 @@ export default function BridgePuzzle({ puzzle, onSolve }) {
 
   return (
     <div className="bridge-puzzle">
+      {puzzle.question && (
+        <p className="bridge-question">
+          {puzzle.question}
+        </p>
+      )}
       <div className="bridge-image-container" style={{ position: "relative" }}>
         <img
           ref={imgRef}

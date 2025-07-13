@@ -14,12 +14,7 @@ export default function FuturaSuccess({ isFuturaRoom, handleRestart }) {
         <video
           src="/success.mp4"
           controls
-          style={{
-            width: "50%",
-            display: "block",
-            borderRadius: "12px",
-            margin: "2rem 0",
-          }}
+          className="success-video"
         >
           Your browser does not support the video tag.
         </video>
@@ -27,11 +22,11 @@ export default function FuturaSuccess({ isFuturaRoom, handleRestart }) {
           Thanks for playing! More puzzles are on the way. Want to support
           future builds?
         </p>
-        <p align="left">
+        <div className="bmc-container">
           <a href="https://coff.ee/joycejetson">
             <img src="/bmc-button.png" width="150" alt="Buy Me a Coffee" />
           </a>
-        </p>
+        </div>
         <button
           className="sci-fi-btn sci-fi-btn-secondary"
           onClick={handleRestart}
