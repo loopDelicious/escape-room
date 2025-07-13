@@ -1,10 +1,45 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
-export default function ImagePuzzle({ image, question }) {
+export default function ImagePuzzle({ image, question, audioSrc }) {
   const [mouse, setMouse] = useState({ x: 0, y: 0, inside: false });
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const containerRef = useRef(null);
 
+  // Check if this image should have the flashlight effect
+  const shouldUseFlashlight = !image.includes("chalkboard.png");
+
+  // Audio functionality
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (audioSrc && audioRef.current) {
+      audioRef.current.loop = true;
+      audioRef.current.volume = 0.1; // Set volume to 10%
+      setIsAudioPlaying(false); // Start muted
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
+  }, [audioSrc]);
+
+  const handleAudioToggle = () => {
+    if (audioRef.current) {
+      if (isAudioPlaying) {
+        audioRef.current.pause();
+        setIsAudioPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsAudioPlaying(true);
+      }
+    }
+  };
+
   const handleMouseMove = (e) => {
+    if (!shouldUseFlashlight) return;
     const rect = containerRef.current.getBoundingClientRect();
     setMouse({
       x: e.clientX - rect.left,
@@ -14,6 +49,7 @@ export default function ImagePuzzle({ image, question }) {
   };
 
   const handleMouseLeave = () => {
+    if (!shouldUseFlashlight) return;
     setMouse((m) => ({ ...m, inside: false }));
   };
 
@@ -40,17 +76,32 @@ export default function ImagePuzzle({ image, question }) {
 
   return (
     <div className="puzzle-content">
+      {audioSrc && (
+        <audio ref={audioRef} src={audioSrc} preload="auto" />
+      )}
       <div
-        className="flashlight-image-container"
+        className={`flashlight-image-container ${!shouldUseFlashlight ? 'no-flashlight' : ''}`}
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        style={{ position: 'relative' }}
       >
         <img src={image} alt="Puzzle" />
-        <div
-          className={`flashlight-overlay ${mouse.inside ? "fast" : "slow"}`}
-          style={{ background: gradient }}
-        />
+        {audioSrc && (
+          <button 
+            className="audio-toggle-btn"
+            onClick={handleAudioToggle}
+            title={isAudioPlaying ? "Mute audio" : "Play audio"}
+          >
+            {isAudioPlaying ? "🔊" : "🔇"}
+          </button>
+        )}
+        {shouldUseFlashlight && (
+          <div
+            className={`flashlight-overlay ${mouse.inside ? "fast" : "slow"}`}
+            style={{ background: gradient }}
+          />
+        )}
       </div>
       <p>{question}</p>
     </div>

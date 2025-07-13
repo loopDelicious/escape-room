@@ -227,6 +227,18 @@ const puzzles = [
       "You must find all clues to proceed.",
     ],
   },
+  {
+    id: 5,
+    type: "image",
+    image: "/chalkboard.png",
+    audioSrc: "/morse.wav",
+    question:
+      "Someone was playing a game. Is this the answer?",
+    answer: "eject the robot",
+    hints: [
+      "Combine the clues to form the answer.",
+    ],
+  },
 ];
 
 export default puzzles;

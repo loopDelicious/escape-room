@@ -150,7 +150,7 @@ export default function FuturaPuzzleManager({ onRestart }) {
         )}
         {puzzle.type === "image" && (
           <>
-            <ImagePuzzle image={puzzle.image} question={puzzle.question} />
+            <ImagePuzzle image={puzzle.image} question={puzzle.question} audioSrc={puzzle.audioSrc} />
             {puzzle.answer && (
               <form onSubmit={handleSubmit} className="answer-form">
                 <input
